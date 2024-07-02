@@ -5,10 +5,10 @@ export default function Homescreen() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={require('./assets/Menu.png')} style={styles.picture} />
-        <Image source={require('./assets/Logo.png')} style={styles.logo} />
-        <Image source={require('./assets/Search.png')} style={styles.picture} />
-        <Image source={require('./assets/shoppingBag.png')} style={styles.picture} />
+        <Image source={require('./assets/Menu.png')} style={styles.icons} />
+        <Image source={require('./assets/Logo.png')} />
+        <Image source={require('./assets/Search.png')} style={styles.icons} />
+        <Image source={require('./assets/shoppingBag.png')} style={styles.icons} />
       </View>
       <View style={styles.imageContainer}>
         <Text style={styles.text}>OUR STORY</Text>
@@ -29,20 +29,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
+    marginTop:20,
   },
   picture: {
     width: 30,
     height: 30,
-    margin: 5,
+    marginLeft: 5,
     marginRight:45,
   },
   text: {
-    fontSize: 20,
-    marginBottom: 20,
+    fontSize: 25,
+    fontWeight:'bold',
+    marginTop:15,
+    marginRight:30,
   },
-  logo:{
-    width:150,
-    height:70,
-    marginTop:20,
+
+  icons:{
+    marginRight:45,
+    marginLeft:15,
   }
 });
