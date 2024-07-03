@@ -17,39 +17,44 @@ export default function Homescreen() {
       </View>
       <Scrollview vertical>
        <View>
-         <Image source={require('./assets/Filter.png')} style={styles.picture} />
-         <Text style={styles.text}>OUR STORY</Text>
-          <Text style={styles.text}>OUR STORY</Text>
+         <Image source={require('./assets/dress-1.png')} style={styles.picture} />
+         <Text style={styles.text}>OFFICE WEAR</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
       </View>
          <View>
-         <Image source={require('./assets/Filter.png')} style={styles.picture} />
-         <Text style={styles.text}>OUR STORY</Text>
-          <Text style={styles.text}>OUR STORY</Text>
+         <Image source={require('./assets/dress-2.png')} style={styles.picture} />
+         <Text style={styles.text}>BLACK</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
       </View>
          <View>
-         <Image source={require('./assets/Filter.png')} style={styles.picture} />
-         <Text style={styles.text}>OUR STORY</Text>
-          <Text style={styles.text}>OUR STORY</Text>
+         <Image source={require('./assets/dress-3.png')} style={styles.picture} />
+         <Text style={styles.text}>CHURCH WEAR</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
       </View>
          <View>
-         <Image source={require('./assets/Filter.png')} style={styles.picture} />
-         <Text style={styles.text}>OUR STORY</Text>
-          <Text style={styles.text}>OUR STORY</Text>
+         <Image source={require('./assets/dress-4.png')} style={styles.picture} />
+         <Text style={styles.text}>LAMEREI</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
       </View>
          <View>
-         <Image source={require('./assets/Filter.png')} style={styles.picture} />
-         <Text style={styles.text}>OUR STORY</Text>
-          <Text style={styles.text}>OUR STORY</Text>
+         <Image source={require('./assets/dress-5.png')} style={styles.picture} />
+         <Text style={styles.text}>21WN</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
       </View>
          <View>
-         <Image source={require('./assets/Filter.png')} style={styles.picture} />
-         <Text style={styles.text}>OUR STORY</Text>
-          <Text style={styles.text}>OUR STORY</Text>
+         <Image source={require('./assets/dress-6.png')} style={styles.picture} />
+         <Text style={styles.text}>LOPO</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
       </View>
          <View>
-         <Image source={require('./assets/Filter.png')} style={styles.picture} />
-         <Text style={styles.text}>OUR STORY</Text>
-          <Text style={styles.text}>OUR STORY</Text>
+         <Image source={require('./assets/dress-7.png')} style={styles.picture} />
+         <Text style={styles.text}>21WN</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
+      </View>
+       <View>
+         <Image source={require('./assets/sundress.jpg')} style={styles.picture} />
+         <Text style={styles.text}>SUNDRESS</Text>
+          <Text style={styles.text}>reversible angora cardigan</Text>
       </View>
       </Scrollview>
     </View>
