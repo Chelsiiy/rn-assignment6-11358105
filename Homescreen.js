@@ -1,20 +1,57 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 
 export default function Homescreen() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={require('./assets/Menu.png')} style={styles.icons} />
-        <Image source={require('./assets/Logo.png')} />
-        <Image source={require('./assets/Search.png')} style={styles.icons} />
-        <Image source={require('./assets/shoppingBag.png')} style={styles.icons} />
+        <Image source={require('./assets/Logo.png')} style={styles.picture} />
+        <Image source={require('./assets/Menu.png')} style={styles.picture} />
+        <Image source={require('./assets/shoppingBag.png')} style={styles.picture} />
+        <Image source={require('./assets/Search.png')} style={styles.picture} />
       </View>
-      <View style={styles.imageContainer}>
+      <View>
         <Text style={styles.text}>OUR STORY</Text>
          <Image source={require('./assets/Filter.png')} style={styles.picture} />
           <Image source={require('./assets/Listview.png')} style={styles.picture} />
       </View>
+      <Scrollview vertical>
+       <View>
+         <Image source={require('./assets/Filter.png')} style={styles.picture} />
+         <Text style={styles.text}>OUR STORY</Text>
+          <Text style={styles.text}>OUR STORY</Text>
+      </View>
+         <View>
+         <Image source={require('./assets/Filter.png')} style={styles.picture} />
+         <Text style={styles.text}>OUR STORY</Text>
+          <Text style={styles.text}>OUR STORY</Text>
+      </View>
+         <View>
+         <Image source={require('./assets/Filter.png')} style={styles.picture} />
+         <Text style={styles.text}>OUR STORY</Text>
+          <Text style={styles.text}>OUR STORY</Text>
+      </View>
+         <View>
+         <Image source={require('./assets/Filter.png')} style={styles.picture} />
+         <Text style={styles.text}>OUR STORY</Text>
+          <Text style={styles.text}>OUR STORY</Text>
+      </View>
+         <View>
+         <Image source={require('./assets/Filter.png')} style={styles.picture} />
+         <Text style={styles.text}>OUR STORY</Text>
+          <Text style={styles.text}>OUR STORY</Text>
+      </View>
+         <View>
+         <Image source={require('./assets/Filter.png')} style={styles.picture} />
+         <Text style={styles.text}>OUR STORY</Text>
+          <Text style={styles.text}>OUR STORY</Text>
+      </View>
+         <View>
+         <Image source={require('./assets/Filter.png')} style={styles.picture} />
+         <Text style={styles.text}>OUR STORY</Text>
+          <Text style={styles.text}>OUR STORY</Text>
+      </View>
+      </Scrollview>
     </View>
   );
 }
@@ -29,23 +66,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginTop:20,
   },
   picture: {
-    width: 30,
-    height: 30,
-    marginLeft: 5,
-    marginRight:45,
+    width: 50,
+    height: 50,
+    margin: 5,
   },
   text: {
-    fontSize: 25,
-    fontWeight:'bold',
-    marginTop:15,
-    marginRight:30,
+    fontSize: 20,
+    marginBottom: 20,
   },
-
-  icons:{
-    marginRight:45,
-    marginLeft:15,
-  }
 });
