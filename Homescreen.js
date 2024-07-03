@@ -5,8 +5,8 @@ export default function Homescreen() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={require('./assets/Logo.png')} />
         <Image source={require('./assets/Menu.png')} style={styles.icon} />
+        <Image source={require('./assets/Logo.png')} />
         <Image source={require('./assets/shoppingBag.png')} style={styles.icon} />
         <Image source={require('./assets/Search.png')} style={styles.icon} />
       </View>
@@ -21,41 +21,49 @@ export default function Homescreen() {
             <Image source={require('./assets/dress-1.png')} style={styles.dress} />
             <Text style={styles.itemTitle}>OFFICE WEAR</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$120</Text>
           </View>
           <View style={styles.itemContainer}>
             <Image source={require('./assets/dress-2.png')} style={styles.dress} />
             <Text style={styles.itemTitle}>BLACK</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$125</Text>
           </View>
           <View style={styles.itemContainer}>
             <Image source={require('./assets/dress-3.png')} style={styles.dress} />
             <Text style={styles.itemTitle}>CHURCH WEAR</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$130</Text>
           </View>
           <View style={styles.itemContainer}>
             <Image source={require('./assets/dress-4.png')} style={styles.dress} />
             <Text style={styles.itemTitle}>LAMEREI</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$138</Text>
           </View>
           <View style={styles.itemContainer}>
             <Image source={require('./assets/dress-5.png')} style={styles.dress} />
             <Text style={styles.itemTitle}>21WN</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$140</Text>
           </View>
           <View style={styles.itemContainer}>
             <Image source={require('./assets/dress-6.png')} style={styles.dress} />
             <Text style={styles.itemTitle}>LOPO</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$155</Text>
           </View>
           <View style={styles.itemContainer}>
             <Image source={require('./assets/dress-7.png')} style={styles.dress} />
             <Text style={styles.itemTitle}>21WN</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$125</Text>
           </View>
           <View style={styles.itemContainer}>
             <Image source={require('./assets/sundress.jpg')} style={styles.dress} />
             <Text style={styles.itemTitle}>SUNDRESS</Text>
             <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
+            <Text>$145</Text>
           </View>
         </View>
       </ScrollView>
@@ -83,6 +91,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     margin: 5,
+    marginLeft:30,
+    marginRight:25,
   },
   picture: {
     width: 30,
