@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, TextInput } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Homescreen({ navigation, cart, setCart }) {
-  const addToCart = (item) => {
-    setCart([...cart, item]);
-    alert(`${item.title} added to cart!`);
-  };
-
-  const items = [
+  const [searchQuery, setSearchQuery] = useState('');
+  const [items, setItems] = useState([
     { id: 1, source: require('./assets/dress-1.png'), title: 'OFFICE WEAR', description: 'Reversible Angora Cardigan', price: '$120' },
     { id: 2, source: require('./assets/dress-2.png'), title: 'BLACK', description: 'Reversible Angora Cardigan', price: '$125' },
     { id: 3, source: require('./assets/dress-3.png'), title: 'CHURCH WEAR', description: 'Reversible Angora Cardigan', price: '$130' },
@@ -16,17 +13,89 @@ export default function Homescreen({ navigation, cart, setCart }) {
     { id: 6, source: require('./assets/dress-6.png'), title: 'LOPO', description: 'Reversible Angora Cardigan', price: '$155' },
     { id: 7, source: require('./assets/dress-7.png'), title: '21WN', description: 'Reversible Angora Cardigan', price: '$125' },
     { id: 8, source: require('./assets/sundress.jpg'), title: 'SUNDRESS', description: 'Reversible Angora Cardigan', price: '$145' },
-  ];
+  ]);
+
+  useEffect(() => {
+    const loadCart = async () => {
+      try {
+        const savedCart = await AsyncStorage.getItem('cart');
+        if (savedCart) {
+          setCart(JSON.parse(savedCart));
+        }
+      } catch (error) {
+        console.log('Error loading cart', error);
+      }
+    };
+
+    const loadSearchQuery = async () => {
+      try {
+        const savedSearchQuery = await AsyncStorage.getItem('searchQuery');
+        if (savedSearchQuery) {
+          setSearchQuery(savedSearchQuery);
+        }
+      } catch (error) {
+        console.log('Error loading search query', error);
+      }
+    };
+
+    loadCart();
+    loadSearchQuery();
+  }, []);
+
+  useEffect(() => {
+    const saveCart = async () => {
+      try {
+        await AsyncStorage.setItem('cart', JSON.stringify(cart));
+      } catch (error) {
+        console.log('Error saving cart', error);
+      }
+    };
+
+    saveCart();
+  }, [cart]);
+
+  useEffect(() => {
+    const saveSearchQuery = async () => {
+      try {
+        await AsyncStorage.setItem('searchQuery', searchQuery);
+      } catch (error) {
+        console.log('Error saving search query', error);
+      }
+    };
+
+    saveSearchQuery();
+  }, [searchQuery]);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+    alert(`${item.title} added to cart!`);
+  };
+
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
+  };
+
+  const filteredItems = items.filter(item =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={require('./assets/Menu.png')} style={styles.icon} />
         <Image source={require('./assets/Logo.png')} />
+         <Image source={require('./assets/Search.png')} style={styles.icon} 
         <TouchableOpacity onPress={() => navigation.navigate('Cart', { cart, setCart })}>
+        />
           <Image source={require('./assets/shoppingBag.png')} style={styles.icon} />
         </TouchableOpacity>
-        <Image source={require('./assets/Search.png')} style={styles.icon} />
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search"
+          value={searchQuery}
+          onChangeText={handleSearchChange}
+        />
       </View>
       <View style={styles.storyContainer}>
         <Text style={styles.text}>OUR STORY</Text>
@@ -35,7 +104,7 @@ export default function Homescreen({ navigation, cart, setCart }) {
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.itemsContainer}>
-          {items.map(item => (
+          {filteredItems.map(item => (
             <View key={item.id} style={styles.itemContainer}>
               <Image source={item.source} style={styles.dress} />
               <Text style={styles.itemTitle}>{item.title}</Text>
@@ -61,6 +130,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 20,
+    alignItems: 'center',
   },
   storyContainer: {
     flexDirection: 'row',
@@ -75,16 +145,27 @@ const styles = StyleSheet.create({
     marginRight: 35,
     marginLeft: 35,
   },
+  searchInput: {
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    flex: 1,
+    marginLeft: 15,
+    marginRight: 15,
+  },
   picture: {
     width: 30,
     height: 30,
-    marginLeft: 5,
-    marginRight: 15,
+    marginLeft: 35,
+    marginRight: 35,
   },
   text: {
     fontSize: 25,
     fontWeight: 'bold',
-    marginRight: 10,
+    marginRight: 20,
+    marginLeft: 15,
   },
   scrollContainer: {
     alignItems: 'center',
