@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 export default function Homescreen({ navigation, cart, setCart }) {
   const addToCart = (item) => {
@@ -22,8 +22,10 @@ export default function Homescreen({ navigation, cart, setCart }) {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <Image source={require('./assets/Menu.png')} style={styles.icon} />
-        <Image source={require('./assets/Logo.png')}  />
-        <Image source={require('./assets/shoppingBag.png')} style={styles.icon} />
+        <Image source={require('./assets/Logo.png')} />
+        <TouchableOpacity onPress={() => navigation.navigate('Cart', { cart, setCart })}>
+          <Image source={require('./assets/shoppingBag.png')} style={styles.icon} />
+        </TouchableOpacity>
         <Image source={require('./assets/Search.png')} style={styles.icon} />
       </View>
       <View style={styles.storyContainer}>
@@ -46,9 +48,6 @@ export default function Homescreen({ navigation, cart, setCart }) {
           ))}
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.cartButton} onPress={() => navigation.navigate('Cart', { cart, setCart })}>
-        <Text style={styles.cartButtonText}>Go to Cart ({cart.length})</Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -73,8 +72,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     margin: 5,
-    marginRight:35,
-    marginLeft:35,
+    marginRight: 35,
+    marginLeft: 35,
   },
   picture: {
     width: 30,
@@ -136,16 +135,5 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: '#fff',
     fontSize: 20,
-  },
-  cartButton: {
-    backgroundColor: '#000',
-    borderRadius: 5,
-    padding: 10,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  cartButtonText: {
-    color: '#fff',
-    fontSize: 16,
   },
 });
