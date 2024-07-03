@@ -1,7 +1,25 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 
 export default function Homescreen() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+    alert(`${item.title} added to cart!`);
+  };
+
+  const items = [
+    { id: 1, source: require('./assets/dress-1.png'), title: 'OFFICE WEAR', description: 'Reversible Angora Cardigan', price: '$120' },
+    { id: 2, source: require('./assets/dress-2.png'), title: 'BLACK', description: 'Reversible Angora Cardigan', price: '$125' },
+    { id: 3, source: require('./assets/dress-3.png'), title: 'CHURCH WEAR', description: 'Reversible Angora Cardigan', price: '$130' },
+    { id: 4, source: require('./assets/dress-4.png'), title: 'LAMEREI', description: 'Reversible Angora Cardigan', price: '$138' },
+    { id: 5, source: require('./assets/dress-5.png'), title: '21WN', description: 'Reversible Angora Cardigan', price: '$140' },
+    { id: 6, source: require('./assets/dress-6.png'), title: 'LOPO', description: 'Reversible Angora Cardigan', price: '$155' },
+    { id: 7, source: require('./assets/dress-7.png'), title: '21WN', description: 'Reversible Angora Cardigan', price: '$125' },
+    { id: 8, source: require('./assets/sundress.jpg'), title: 'SUNDRESS', description: 'Reversible Angora Cardigan', price: '$145' },
+  ];
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -17,54 +35,17 @@ export default function Homescreen() {
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.itemsContainer}>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/dress-1.png')} style={styles.dress} />
-            <Text style={styles.itemTitle}>OFFICE WEAR</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$120</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/dress-2.png')} style={styles.dress} />
-            <Text style={styles.itemTitle}>BLACK</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$125</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/dress-3.png')} style={styles.dress} />
-            <Text style={styles.itemTitle}>CHURCH WEAR</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$130</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/dress-4.png')} style={styles.dress} />
-            <Text style={styles.itemTitle}>LAMEREI</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$138</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/dress-5.png')} style={styles.dress} />
-            <Text style={styles.itemTitle}>21WN</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$140</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/dress-6.png')} style={styles.dress} />
-            <Text style={styles.itemTitle}>LOPO</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$155</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/dress-7.png')} style={styles.dress} />
-            <Text style={styles.itemTitle}>21WN</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$125</Text>
-          </View>
-          <View style={styles.itemContainer}>
-            <Image source={require('./assets/sundress.jpg')} style={styles.dress} />
-            <Text style={styles.itemTitle}>SUNDRESS</Text>
-            <Text style={styles.itemDescription}>Reversible Angora Cardigan</Text>
-            <Text style={styles.itemPrice}>$145</Text>
-          </View>
+          {items.map(item => (
+            <View key={item.id} style={styles.itemContainer}>
+              <Image source={item.source} style={styles.dress} />
+              <Text style={styles.itemTitle}>{item.title}</Text>
+              <Text style={styles.itemDescription}>{item.description}</Text>
+              <Text style={styles.itemPrice}>{item.price}</Text>
+              <TouchableOpacity style={styles.addButton} onPress={() => addToCart(item)}>
+                <Text style={styles.addButtonText}>+</Text>
+              </TouchableOpacity>
+            </View>
+          ))}
         </View>
       </ScrollView>
     </View>
@@ -91,17 +72,19 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     margin: 5,
-    marginRight:25,
+    marginRight:35,
+    marginLeft:35,
   },
   picture: {
     width: 30,
     height: 30,
-    marginLeft: 35,
+    marginLeft: 5,
+    marginRight: 15,
   },
   text: {
     fontSize: 25,
     fontWeight: 'bold',
-    marginLeft: 20,
+    marginRight: 10,
   },
   scrollContainer: {
     alignItems: 'center',
@@ -116,6 +99,7 @@ const styles = StyleSheet.create({
     width: '45%',
     alignItems: 'center',
     marginBottom: 20,
+    position: 'relative',
   },
   dress: {
     width: '100%',
@@ -136,5 +120,20 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 5,
     fontWeight: 'bold',
+  },
+  addButton: {
+    position: 'absolute',
+    right: 10,
+    bottom: 10,
+    backgroundColor: '#000',
+    borderRadius: 20,
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addButtonText: {
+    color: '#fff',
+    fontSize: 20,
   },
 });
