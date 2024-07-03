@@ -85,9 +85,8 @@ export default function Homescreen({ navigation, cart, setCart }) {
       <View style={styles.imageContainer}>
         <Image source={require('./assets/Menu.png')} style={styles.icon} />
         <Image source={require('./assets/Logo.png')} />
-         <Image source={require('./assets/Search.png')} style={styles.icon} 
+        <Image source={require('./assets/Search.png')} style={styles.icon} />
         <TouchableOpacity onPress={() => navigation.navigate('Cart', { cart, setCart })}>
-        />
           <Image source={require('./assets/shoppingBag.png')} style={styles.icon} />
         </TouchableOpacity>
         <TextInput
