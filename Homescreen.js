@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 
-export default function Homescreen({ navigation, cart, setCart }) {
+export default function Homescreen() {
+  const [cart, setCart] = useState([]);
+
   const addToCart = (item) => {
     setCart([...cart, item]);
     alert(`${item.title} added to cart!`);
@@ -46,9 +48,6 @@ export default function Homescreen({ navigation, cart, setCart }) {
           ))}
         </View>
       </ScrollView>
-      <TouchableOpacity style={styles.cartButton} onPress={() => navigation.navigate('Cart', { cart, setCart })}>
-        <Text style={styles.cartButtonText}>Go to Cart ({cart.length})</Text>
-      </TouchableOpacity>
     </View>
   );
 }
@@ -136,16 +135,5 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: '#fff',
     fontSize: 20,
-  },
-  cartButton: {
-    backgroundColor: '#000',
-    borderRadius: 5,
-    padding: 10,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  cartButtonText: {
-    color: '#fff',
-    fontSize: 16,
   },
 });
